@@ -1,0 +1,10 @@
+Use these instructions to set up an environment for running and contributing to
+to the exercises in the /ThinkBayes directory.
+
+1.  Create and activate an Anaconda environment for ThinkBayes code exercises with command:
+    ~/anaconda/bin/conda create --name thinkbayes2 python=3 matplotlib pandas scipy
+
+2.  Use these commands to clone the ThinkBayes2 repository into vignettes/ThinkBayes/lib/ThinkBayes2:
+    cd lib
+    rmdir ThinkBayes2
+    git clone https://github.com/AllenDowney/ThinkBayes2.git

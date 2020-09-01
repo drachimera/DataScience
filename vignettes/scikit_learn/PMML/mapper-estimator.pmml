@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_2" version="4.2">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.0-SNAPSHOT"/>
+		<Timestamp>2016-07-01T18:03:28Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="Sepal.Length" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="4.3" rightMargin="7.9"/>
+		</DataField>
+		<DataField name="Sepal.Width" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="2.0" rightMargin="4.4"/>
+		</DataField>
+		<DataField name="Petal.Length" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="1.0" rightMargin="6.9"/>
+		</DataField>
+		<DataField name="Petal.Width" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="0.1" rightMargin="2.5"/>
+		</DataField>
+		<DataField name="Species" optype="categorical" dataType="string">
+			<Value value="Iris-setosa"/>
+			<Value value="Iris-versicolor"/>
+			<Value value="Iris-virginica"/>
+		</DataField>
+	</DataDictionary>
+	<TransformationDictionary>
+		<DerivedField name="standard_scaler(Sepal.Length)" optype="continuous" dataType="double">
+			<Apply function="/">
+				<Apply function="-">
+					<FieldRef field="Sepal.Length"/>
+					<Constant dataType="double">5.843333333333334</Constant>
+				</Apply>
+				<Constant dataType="double">0.8253012917851409</Constant>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="standard_scaler(Sepal.Width)" optype="continuous" dataType="double">
+			<Apply function="/">
+				<Apply function="-">
+					<FieldRef field="Sepal.Width"/>
+					<Constant dataType="double">3.0540000000000003</Constant>
+				</Apply>
+				<Constant dataType="double">0.4321465800705435</Constant>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="standard_scaler(Petal.Length)" optype="continuous" dataType="double">
+			<Apply function="/">
+				<Apply function="-">
+					<FieldRef field="Petal.Length"/>
+					<Constant dataType="double">3.758666666666666</Constant>
+				</Apply>
+				<Constant dataType="double">1.7585291834055212</Constant>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="standard_scaler(Petal.Width)" optype="continuous" dataType="double">
+			<Apply function="/">
+				<Apply function="-">
+					<FieldRef field="Petal.Width"/>
+					<Constant dataType="double">1.1986666666666668</Constant>
+				</Apply>
+				<Constant dataType="double">0.7606126185881716</Constant>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="pca(1)[0]" optype="continuous" dataType="float">
+			<Apply function="sum">
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Length)"/>
+						<Constant dataType="double">-4.736951571734001E-16</Constant>
+					</Apply>
+					<Constant dataType="double">0.5223716204076603</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Width)"/>
+						<Constant dataType="double">-6.631732200427602E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.26335491531393984</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Length)"/>
+						<Constant dataType="double">3.315866100213801E-16</Constant>
+					</Apply>
+					<Constant dataType="double">0.5812540055976476</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Width)"/>
+						<Constant dataType="double">-2.842170943040401E-16</Constant>
+					</Apply>
+					<Constant dataType="double">0.5656110498826489</Constant>
+				</Apply>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="pca(1)[1]" optype="continuous" dataType="float">
+			<Apply function="sum">
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Length)"/>
+						<Constant dataType="double">-4.736951571734001E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.372318363349969</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Width)"/>
+						<Constant dataType="double">-6.631732200427602E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.9255564941472946</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Length)"/>
+						<Constant dataType="double">3.315866100213801E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.02109477684124683</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Width)"/>
+						<Constant dataType="double">-2.842170943040401E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.06541576907892777</Constant>
+				</Apply>
+			</Apply>
+		</DerivedField>
+		<DerivedField name="pca(1)[2]" optype="continuous" dataType="float">
+			<Apply function="sum">
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Length)"/>
+						<Constant dataType="double">-4.736951571734001E-16</Constant>
+					</Apply>
+					<Constant dataType="double">0.721016809062043</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Sepal.Width)"/>
+						<Constant dataType="double">-6.631732200427602E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.24203287721394118</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Length)"/>
+						<Constant dataType="double">3.315866100213801E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.14089225848754283</Constant>
+				</Apply>
+				<Apply function="*">
+					<Apply function="-">
+						<FieldRef field="standard_scaler(Petal.Width)"/>
+						<Constant dataType="double">-2.842170943040401E-16</Constant>
+					</Apply>
+					<Constant dataType="double">-0.6338014033558229</Constant>
+				</Apply>
+			</Apply>
+		</DerivedField>
+	</TransformationDictionary>
+	<MiningModel functionName="classification">
+		<MiningSchema>
+			<MiningField name="Species" usageType="target"/>
+			<MiningField name="Sepal.Length"/>
+			<MiningField name="Sepal.Width"/>
+			<MiningField name="Petal.Length"/>
+			<MiningField name="Petal.Width"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability_Iris-setosa" feature="probability" value="Iris-setosa"/>
+			<OutputField name="probability_Iris-versicolor" feature="probability" value="Iris-versicolor"/>
+			<OutputField name="probability_Iris-virginica" feature="probability" value="Iris-virginica"/>
+		</Output>
+		<Segmentation multipleModelMethod="average">
+			<Segment id="1">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.5108129"/>
+							<Node id="3" score="Iris-virginica" recordCount="7.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.0635524"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="5.0"/>
+							</Node>
+							<Node id="4" score="Iris-virginica" recordCount="13.0">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.0635524"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="13.0"/>
+							</Node>
+						</Node>
+						<Node id="5">
+							<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.5108129"/>
+							<Node id="6">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.0465428"/>
+								<Node id="7">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.42636055"/>
+									<Node id="8" score="Iris-setosa" recordCount="21.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.7000775"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="21.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+									<Node id="9">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.7000775"/>
+										<Node id="10" score="Iris-versicolor" recordCount="9.0">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.84994256"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+										</Node>
+										<Node id="11" score="Iris-virginica" recordCount="13.0">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.84994256"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node id="12" score="Iris-virginica" recordCount="12.0">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.42636055"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="3.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="9.0"/>
+								</Node>
+							</Node>
+							<Node id="13">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.0465428"/>
+								<Node id="14" score="Iris-setosa" recordCount="12.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-1.1847852"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="12.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="15">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-1.1847852"/>
+									<Node id="16">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.788908"/>
+										<Node id="17" score="Iris-versicolor" recordCount="24.0">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.2601661"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="19.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="5.0"/>
+										</Node>
+										<Node id="18">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.2601661"/>
+											<Node id="19" score="Iris-versicolor" recordCount="8.0">
+												<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.059027012"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+											</Node>
+											<Node id="20" score="Iris-virginica" recordCount="9.0">
+												<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.059027012"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="1.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="21">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.788908"/>
+										<Node id="22" score="Iris-versicolor" recordCount="15.0">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.25060177"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="15.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+										<Node id="23" score="Iris-versicolor" recordCount="7.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.25060177"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="6.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="2">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.2192908"/>
+							<Node id="3" score="Iris-setosa" recordCount="10.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.8308445"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="5.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+							</Node>
+							<Node id="4" score="Iris-virginica" recordCount="22.0">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.8308445"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="22.0"/>
+							</Node>
+						</Node>
+						<Node id="5">
+							<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.2192908"/>
+							<Node id="6">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.031284336"/>
+								<Node id="7" score="Iris-setosa" recordCount="22.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.5497284"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="22.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="8">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.5497284"/>
+									<Node id="9" score="Iris-versicolor" recordCount="6.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.4147601"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="6.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+									<Node id="10" score="Iris-virginica" recordCount="17.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.4147601"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="17.0"/>
+									</Node>
+								</Node>
+							</Node>
+							<Node id="11">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.031284336"/>
+								<Node id="12">
+									<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.25829947"/>
+									<Node id="13">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.081441775"/>
+										<Node id="14" score="Iris-setosa" recordCount="11.0">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.139152"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="6.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+										</Node>
+										<Node id="15" score="Iris-versicolor" recordCount="11.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.139152"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+										</Node>
+									</Node>
+									<Node id="16">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.081441775"/>
+										<Node id="17">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.7005178"/>
+											<Node id="18" score="Iris-setosa" recordCount="16.0">
+												<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.37336308"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="11.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="2.0"/>
+											</Node>
+											<Node id="19" score="Iris-setosa" recordCount="7.0">
+												<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.37336308"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="5.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="2.0"/>
+											</Node>
+										</Node>
+										<Node id="20" score="Iris-versicolor" recordCount="6.0">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.7005178"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node id="21">
+									<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.25829947"/>
+									<Node id="22" score="Iris-versicolor" recordCount="12.0">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.38207614"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+									<Node id="23" score="Iris-versicolor" recordCount="10.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.38207614"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="3">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.12600039"/>
+							<Node id="3" score="Iris-setosa" recordCount="10.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.83607405"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="5.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+							</Node>
+							<Node id="4" score="Iris-virginica" recordCount="42.0">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.83607405"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="42.0"/>
+							</Node>
+						</Node>
+						<Node id="5">
+							<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.12600039"/>
+							<Node id="6">
+								<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.29859775"/>
+								<Node id="7">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.742521"/>
+									<Node id="8" score="Iris-setosa" recordCount="41.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.78408355"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="41.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+									<Node id="9" score="Iris-versicolor" recordCount="13.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.78408355"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="6.0"/>
+									</Node>
+								</Node>
+								<Node id="10" score="Iris-versicolor" recordCount="15.0">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.742521"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+								</Node>
+							</Node>
+							<Node id="11">
+								<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.29859775"/>
+								<Node id="12">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.5534437"/>
+									<Node id="13" score="Iris-versicolor" recordCount="7.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.62605333"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+									<Node id="14" score="Iris-versicolor" recordCount="14.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.62605333"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="14.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+								</Node>
+								<Node id="15" score="Iris-virginica" recordCount="8.0">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.5534437"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="4">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.26941738"/>
+							<Node id="3" score="Iris-versicolor" recordCount="10.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.35319042"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="3.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+							</Node>
+							<Node id="4" score="Iris-virginica" recordCount="16.0">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.35319042"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="16.0"/>
+							</Node>
+						</Node>
+						<Node id="5">
+							<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.26941738"/>
+							<Node id="6">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.031284336"/>
+								<Node id="7" score="Iris-setosa" recordCount="39.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.53584826"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="39.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="8">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.53584826"/>
+									<Node id="9" score="Iris-virginica" recordCount="12.0">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.6436226"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="10.0"/>
+									</Node>
+									<Node id="10" score="Iris-virginica" recordCount="13.0">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.6436226"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+									</Node>
+								</Node>
+							</Node>
+							<Node id="11">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.031284336"/>
+								<Node id="12">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.742521"/>
+									<Node id="13">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.2546389"/>
+										<Node id="14">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.0675778"/>
+											<Node id="15" score="Iris-versicolor" recordCount="7.0">
+												<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.40663987"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+											<Node id="16" score="Iris-versicolor" recordCount="6.0">
+												<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.40663987"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+											</Node>
+										</Node>
+										<Node id="17" score="Iris-setosa" recordCount="9.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.0675778"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="8.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+										</Node>
+									</Node>
+									<Node id="18" score="Iris-versicolor" recordCount="8.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.2546389"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="8.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+									</Node>
+								</Node>
+								<Node id="19">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.742521"/>
+									<Node id="20" score="Iris-versicolor" recordCount="9.0">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.92179775"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+									</Node>
+									<Node id="21">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.92179775"/>
+										<Node id="22">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.19524834"/>
+											<Node id="23" score="Iris-versicolor" recordCount="5.0">
+												<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.09580833"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+											<Node id="24" score="Iris-versicolor" recordCount="6.0">
+												<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.09580833"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+										</Node>
+										<Node id="25" score="Iris-versicolor" recordCount="10.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.19524834"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="8.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="2.0"/>
+										</Node>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="5">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2" score="Iris-setosa" recordCount="62.0">
+							<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-1.0970196"/>
+							<ScoreDistribution value="Iris-setosa" recordCount="62.0"/>
+							<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+							<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+						</Node>
+						<Node id="3">
+							<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-1.0970196"/>
+							<Node id="4">
+								<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.16107973"/>
+								<Node id="5">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.18897259"/>
+									<Node id="6" score="Iris-virginica" recordCount="6.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.1928452"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+									</Node>
+									<Node id="7" score="Iris-virginica" recordCount="17.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.1928452"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="17.0"/>
+									</Node>
+								</Node>
+								<Node id="8" score="Iris-virginica" recordCount="7.0">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.18897259"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="5.0"/>
+								</Node>
+							</Node>
+							<Node id="9">
+								<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.16107973"/>
+								<Node id="10">
+									<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.4895147"/>
+									<Node id="11" score="Iris-virginica" recordCount="7.0">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.53833365"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+									</Node>
+									<Node id="12">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.53833365"/>
+										<Node id="13">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.9471072"/>
+											<Node id="14" score="Iris-versicolor" recordCount="7.0">
+												<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.25216547"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+											<Node id="15">
+												<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.25216547"/>
+												<Node id="16" score="Iris-versicolor" recordCount="9.0">
+													<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.50965565"/>
+													<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+													<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+													<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+												</Node>
+												<Node id="17" score="Iris-versicolor" recordCount="13.0">
+													<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.50965565"/>
+													<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+													<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+													<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+												</Node>
+											</Node>
+										</Node>
+										<Node id="18" score="Iris-versicolor" recordCount="10.0">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.9471072"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="10.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node id="19" score="Iris-virginica" recordCount="12.0">
+									<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.4895147"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="6">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.031284336"/>
+							<Node id="3">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-1.0198154"/>
+								<Node id="4" score="Iris-setosa" recordCount="7.0">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-1.673512"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="4.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+								</Node>
+								<Node id="5" score="Iris-setosa" recordCount="10.0">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-1.673512"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="9.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+								</Node>
+							</Node>
+							<Node id="6">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-1.0198154"/>
+								<Node id="7">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.60451627"/>
+									<Node id="8" score="Iris-virginica" recordCount="7.0">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.7788963"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="1.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+									</Node>
+									<Node id="9" score="Iris-virginica" recordCount="10.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.7788963"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="10.0"/>
+									</Node>
+								</Node>
+								<Node id="10">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.60451627"/>
+									<Node id="11">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.44407788"/>
+										<Node id="12" score="Iris-setosa" recordCount="16.0">
+											<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.5439651"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="16.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+										<Node id="13" score="Iris-virginica" recordCount="12.0">
+											<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.5439651"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="7.0"/>
+										</Node>
+									</Node>
+									<Node id="14" score="Iris-virginica" recordCount="9.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.44407788"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="6.0"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node id="15">
+							<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.031284336"/>
+							<Node id="16">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.9231142"/>
+								<Node id="17">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.28841692"/>
+									<Node id="18" score="Iris-versicolor" recordCount="7.0">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.12705779"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="2.0"/>
+									</Node>
+									<Node id="19" score="Iris-versicolor" recordCount="9.0">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.12705779"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="6.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+									</Node>
+								</Node>
+								<Node id="20">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.28841692"/>
+									<Node id="21">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.2546389"/>
+										<Node id="22" score="Iris-setosa" recordCount="8.0">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.37143773"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+										</Node>
+										<Node id="23">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.37143773"/>
+											<Node id="24" score="Iris-versicolor" recordCount="13.0">
+												<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.6644093"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="3.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="9.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+											</Node>
+											<Node id="25" score="Iris-setosa" recordCount="10.0">
+												<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.6644093"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="5.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="1.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="26" score="Iris-versicolor" recordCount="8.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.2546389"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="2.0"/>
+									</Node>
+								</Node>
+							</Node>
+							<Node id="27">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.9231142"/>
+								<Node id="28" score="Iris-versicolor" recordCount="9.0">
+									<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.09580833"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="8.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="29" score="Iris-versicolor" recordCount="15.0">
+									<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.09580833"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="14.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="7">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.83555925"/>
+							<Node id="3" score="Iris-setosa" recordCount="60.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.87667197"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="60.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+							</Node>
+							<Node id="4">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.87667197"/>
+								<Node id="5" score="Iris-versicolor" recordCount="20.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.94276047"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="20.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="6">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.94276047"/>
+									<Node id="7">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.3620746"/>
+										<Node id="8" score="Iris-virginica" recordCount="6.0">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.11870257"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="6.0"/>
+										</Node>
+										<Node id="9" score="Iris-versicolor" recordCount="8.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.11870257"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+										</Node>
+									</Node>
+									<Node id="10" score="Iris-virginica" recordCount="31.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.3620746"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="31.0"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node id="11">
+							<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.83555925"/>
+							<Node id="12" score="Iris-versicolor" recordCount="6.0">
+								<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.16184443"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+							</Node>
+							<Node id="13" score="Iris-versicolor" recordCount="19.0">
+								<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.16184443"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="19.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="8">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2" score="Iris-setosa" recordCount="40.0">
+							<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-1.1649008"/>
+							<ScoreDistribution value="Iris-setosa" recordCount="40.0"/>
+							<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+							<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+						</Node>
+						<Node id="3">
+							<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-1.1649008"/>
+							<Node id="4">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.6436226"/>
+								<Node id="5" score="Iris-virginica" recordCount="6.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.7139139"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+								</Node>
+								<Node id="6" score="Iris-virginica" recordCount="12.0">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.7139139"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="12.0"/>
+								</Node>
+							</Node>
+							<Node id="7">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.6436226"/>
+								<Node id="8">
+									<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.14875464"/>
+									<Node id="9">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.26277888"/>
+										<Node id="10" score="Iris-virginica" recordCount="9.0">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.23706025"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="1.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+										</Node>
+										<Node id="11" score="Iris-virginica" recordCount="9.0">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.23706025"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="7.0"/>
+										</Node>
+									</Node>
+									<Node id="12" score="Iris-virginica" recordCount="13.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.26277888"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="5.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+									</Node>
+								</Node>
+								<Node id="13">
+									<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.14875464"/>
+									<Node id="14">
+										<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.4583659"/>
+										<Node id="15" score="Iris-versicolor" recordCount="41.0">
+											<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.0919328"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="41.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+										<Node id="16" score="Iris-versicolor" recordCount="13.0">
+											<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.0919328"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="9.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="4.0"/>
+										</Node>
+									</Node>
+									<Node id="17" score="Iris-virginica" recordCount="7.0">
+										<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.4583659"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="7.0"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="9">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.0465428"/>
+							<Node id="3" score="Iris-setosa" recordCount="13.0">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-1.1152539"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="10.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+							</Node>
+							<Node id="4">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-1.1152539"/>
+								<Node id="5" score="Iris-setosa" recordCount="21.0">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-0.53584826"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="21.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+								<Node id="6">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-0.53584826"/>
+									<Node id="7" score="Iris-virginica" recordCount="21.0">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.16434237"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="21.0"/>
+									</Node>
+									<Node id="8" score="Iris-versicolor" recordCount="13.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.16434237"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="6.0"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node id="9">
+							<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.0465428"/>
+							<Node id="10">
+								<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.9231142"/>
+								<Node id="11">
+									<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.8382318"/>
+									<Node id="12">
+										<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.4407121"/>
+										<Node id="13" score="Iris-versicolor" recordCount="10.0">
+											<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.22288693"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="9.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+										<Node id="14" score="Iris-versicolor" recordCount="9.0">
+											<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.22288693"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="9.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+									</Node>
+									<Node id="15">
+										<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.4407121"/>
+										<Node id="16" score="Iris-setosa" recordCount="7.0">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.63164866"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+										<Node id="17" score="Iris-setosa" recordCount="8.0">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.63164866"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="4.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node id="18">
+									<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.8382318"/>
+									<Node id="19" score="Iris-virginica" recordCount="11.0">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.18837787"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="11.0"/>
+									</Node>
+									<Node id="20" score="Iris-virginica" recordCount="12.0">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.18837787"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="10.0"/>
+									</Node>
+								</Node>
+							</Node>
+							<Node id="21">
+								<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.9231142"/>
+								<Node id="22" score="Iris-virginica" recordCount="6.0">
+									<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.13287322"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="1.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="2.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="3.0"/>
+								</Node>
+								<Node id="23" score="Iris-versicolor" recordCount="19.0">
+									<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.13287322"/>
+									<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+									<ScoreDistribution value="Iris-versicolor" recordCount="19.0"/>
+									<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="10">
+				<True/>
+				<TreeModel functionName="classification" splitCharacteristic="binarySplit">
+					<MiningSchema>
+						<MiningField name="Sepal.Length"/>
+						<MiningField name="Sepal.Width"/>
+						<MiningField name="Petal.Length"/>
+						<MiningField name="Petal.Width"/>
+					</MiningSchema>
+					<Node id="1">
+						<True/>
+						<Node id="2">
+							<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.29504305"/>
+							<Node id="3" score="Iris-virginica" recordCount="12.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="0.9413658"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="3.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="9.0"/>
+							</Node>
+							<Node id="4" score="Iris-virginica" recordCount="24.0">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="0.9413658"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="24.0"/>
+							</Node>
+						</Node>
+						<Node id="5">
+							<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.29504305"/>
+							<Node id="6" score="Iris-setosa" recordCount="44.0">
+								<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="-1.1027828"/>
+								<ScoreDistribution value="Iris-setosa" recordCount="44.0"/>
+								<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+								<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+							</Node>
+							<Node id="7">
+								<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="-1.1027828"/>
+								<Node id="8">
+									<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="-0.13849264"/>
+									<Node id="9" score="Iris-virginica" recordCount="8.0">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.034759123"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+									</Node>
+									<Node id="10">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.034759123"/>
+										<Node id="11" score="Iris-versicolor" recordCount="15.0">
+											<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.5705396"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="8.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="7.0"/>
+										</Node>
+										<Node id="12" score="Iris-virginica" recordCount="8.0">
+											<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.5705396"/>
+											<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+											<ScoreDistribution value="Iris-versicolor" recordCount="1.0"/>
+											<ScoreDistribution value="Iris-virginica" recordCount="7.0"/>
+										</Node>
+									</Node>
+								</Node>
+								<Node id="13">
+									<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="-0.13849264"/>
+									<Node id="14" score="Iris-versicolor" recordCount="10.0">
+										<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="-0.13105014"/>
+										<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+										<ScoreDistribution value="Iris-versicolor" recordCount="9.0"/>
+										<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+									</Node>
+									<Node id="15">
+										<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="-0.13105014"/>
+										<Node id="16">
+											<SimplePredicate field="pca(1)[1]" operator="lessOrEqual" value="0.83239007"/>
+											<Node id="17" score="Iris-versicolor" recordCount="7.0">
+												<SimplePredicate field="pca(1)[0]" operator="lessOrEqual" value="1.0187471"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+											<Node id="18" score="Iris-virginica" recordCount="8.0">
+												<SimplePredicate field="pca(1)[0]" operator="greaterThan" value="1.0187471"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="8.0"/>
+											</Node>
+										</Node>
+										<Node id="19">
+											<SimplePredicate field="pca(1)[1]" operator="greaterThan" value="0.83239007"/>
+											<Node id="20" score="Iris-versicolor" recordCount="7.0">
+												<SimplePredicate field="pca(1)[2]" operator="lessOrEqual" value="0.20258409"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="7.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="0.0"/>
+											</Node>
+											<Node id="21" score="Iris-versicolor" recordCount="7.0">
+												<SimplePredicate field="pca(1)[2]" operator="greaterThan" value="0.20258409"/>
+												<ScoreDistribution value="Iris-setosa" recordCount="0.0"/>
+												<ScoreDistribution value="Iris-versicolor" recordCount="6.0"/>
+												<ScoreDistribution value="Iris-virginica" recordCount="1.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+		</Segmentation>
+	</MiningModel>
+</PMML>

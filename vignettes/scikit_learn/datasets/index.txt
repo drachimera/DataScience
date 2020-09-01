@@ -1,0 +1,9 @@
+These examples come from the ScikitLearn Documentation.
+Basically, the goal was to work through the datasets that you can download with
+ScikitLearn.
+
+The index page to all of this data is here:
+http://scikit-learn.org/stable/datasets/
+
+To use hydrogen, this link is helpful:
+https://github.com/JustinTulloss/zeromq.node/issues/283
